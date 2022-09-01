@@ -11,6 +11,9 @@ public class QueryParamsParser {
     public static HashMap<String, String> parseLoginParams(final String requestUrl) {
         final HashMap<String, String> loginData = new HashMap<>();
         final String queryParams = requestUrl.split("\\?")[REQUEST_URL_QUERY_PARAM_START_INDEX];
+        if (queryParams == null) {
+            return loginData;
+        }
         final String[] params = queryParams.split("&");
 
         for (String param : params) {
